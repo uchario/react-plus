@@ -1,0 +1,32 @@
+.new-expense__controls {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 1rem;
+    text-align: left;
+  }
+  
+  .new-expense__control label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  
+  .new-expense__control input {
+    font: inherit;
+    padding: 1rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .new-expense__actions {
+    align-self: end;
+    display: flex;
+
+  }
+
+  .new-expense__actions button {
+    width: 100%;
+  }
