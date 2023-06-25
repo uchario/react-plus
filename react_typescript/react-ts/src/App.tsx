@@ -15,6 +15,12 @@ function App() {
     });
   }
 
+  const removeTodoHandler = (id: string) => {
+    setTodos((prevTodos) => {
+      return prevTodos.filter((todos) => todos.id !== id);
+    });
+  }
+
   return (
     <>
       <NewTodo
@@ -22,6 +28,7 @@ function App() {
       />
       <Todos 
         items={todos}
+        onRemoveTodo={removeTodoHandler}
       />
     </>
   );
