@@ -1,7 +1,8 @@
 const { createContext, useState } = require("react");
 
 export const ProductsContext = createContext({
-    products: []
+    products: [],
+    toggleFav: (id) => {}
 });
 
 const INITIAL_PRODUCTS = [
@@ -34,10 +35,26 @@ const INITIAL_PRODUCTS = [
 const ProductsProvider = (props) => {
     const [products, setProducts] = useState(INITIAL_PRODUCTS);
 
+    const toggleFavorite = (productId) => {
+        setProducts((prevProducts) => {
+            const prodIndex = prevProducts.findIndex(
+                p => p.id === productId
+              );
+              const newFavStatus = !prevProducts[prodIndex].isFavorite;
+              const updatedProducts = [...prevProducts];
+              updatedProducts[prodIndex] = {
+                ...prevProducts[prodIndex],
+                isFavorite: newFavStatus
+              };
+            return updatedProducts;
+        });
+    }
+
     return(
         <ProductsContext.Provider
             value={{
-                products: products
+                products: products,
+                toggleFav: toggleFavorite
             }}
         >
             {props.children}
